@@ -4,7 +4,7 @@
     "name": "blue-mulher-4ed",
     "builds": [
         {
-            "src": "src/index.html",
+            "src": "src/**",
             "use": "@vercel/static"
         }
     ],
