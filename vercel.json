@@ -1,0 +1,17 @@
+{
+    "version": 2,
+    "public": true,
+    "name": "blue-mulher-4ed",
+    "builds": [
+        {
+            "src": "src/index.html",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/src/$1"
+        }
+    ]
+}

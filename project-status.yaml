@@ -1,0 +1,12 @@
+project: blue-mulher-4ed
+status: planning
+tech_lead: Diego William
+environment: Antigravity
+global_adrs: _CORE_SKILLS/docs/ADR/agents-ia/
+stack: [Google Antigravity, Google Forms, Google Sheets, Apps Script, TailwindCSS]
+decisions:
+  - ADR-001: Lógica de Inscrição Condicional (Participante vs. Expositora)
+  - ADR-002: Design System baseado no conceito "Conexões que Impulsionam"
+ecosystem_versions:
+  global_rules: "V4.0"
+  antigravity-kit: "latest"

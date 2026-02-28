@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Mulher - 4ª Edição</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0055ff',
+                        dark: '#0f172a',
+                        accent: '#00c3ff',
+                        light: '#ffffff',
+                        background: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="bg-background text-gray-700 font-sans antialiased selection:bg-accent selection:text-white"
+    x-data="{ formModalOpen: false, ticketType: 'plateia' }">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#"
+                    class="font-display font-black text-2xl text-primary tracking-tighter hover:text-blue-700 transition-colors">BLUE
+                    MULHER</a>
+
+                <div class="hidden lg:flex space-x-8 items-center">
+                    <a href="#speakers"
+                        class="text-sm font-semibold text-gray-600 hover:text-primary transition-colors uppercase tracking-wide">Speakers</a>
+                    <a href="#agenda"
+                        class="text-sm font-semibold text-gray-600 hover:text-primary transition-colors uppercase tracking-wide">Agenda</a>
+                    <a href="#galeria"
+                        class="text-sm font-semibold text-gray-600 hover:text-primary transition-colors uppercase tracking-wide">Galeria</a>
+                    <a href="#faq"
+                        class="text-sm font-semibold text-gray-600 hover:text-primary transition-colors uppercase tracking-wide">FAQ</a>
+                    <button @click="formModalOpen = true; ticketType = 'plateia'"
+                        class="bg-primary text-white px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wider hover:bg-blue-700 transition-all shadow-md">Garantir
+                        Vaga</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Banner -->
+    <header class="pt-28 pb-8 w-full bg-gradient-to-b from-blue-50 to-background flex flex-col items-center">
+        <!-- Banner Centralizado e Limpo (Idêntico à 3ª Edição) -->
+        <div class="w-full max-w-[1200px] mx-auto px-4 sm:px-6">
+            <img src="assets/img/hero-bg-v4.jpg" alt="Blue Mulher 4ª Edição Banner Oficial"
+                class="w-full h-auto rounded-xl shadow-xl border border-gray-100 object-contain">
+
+            <!-- Resumo do Evento -->
+            <div class="mt-8 max-w-4xl mx-auto text-center px-4">
+                <h2
+                    class="text-4xl md:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-primary mb-3 tracking-wide uppercase">
+                    BLUE MULHER 2026
+                </h2>
+
+                <p
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full text-sm font-bold text-gray-700 shadow-sm border border-gray-100 mb-8">
+                    📍 Hotel Blue Tree São Luís <span class="text-gray-300">|</span>
+                    <a href="https://instagram.com/bluetreesaoluishoteloficial" target="_blank"
+                        class="text-primary hover:text-blue-800 transition-colors">@bluetreesaoluishoteloficial</a>
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-8">
+                    <span
+                        class="px-6 py-2.5 bg-gradient-to-r from-blue-50 to-white text-primary border border-blue-100 rounded-full font-bold tracking-widest uppercase text-xs md:text-sm shadow-sm hover:shadow-md transition-shadow flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        Inovação
+                    </span>
+                    <span
+                        class="px-6 py-2.5 bg-gradient-to-r from-blue-50 to-white text-primary border border-blue-100 rounded-full font-bold tracking-widest uppercase text-xs md:text-sm shadow-sm hover:shadow-md transition-shadow flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                        Conexão
+                    </span>
+                    <span
+                        class="px-6 py-2.5 bg-gradient-to-r from-blue-50 to-white text-primary border border-blue-100 rounded-full font-bold tracking-widest uppercase text-xs md:text-sm shadow-sm hover:shadow-md transition-shadow flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        Negócios
+                    </span>
+                </div>
+
+                <div
+                    class="bg-white/60 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-white max-w-3xl mx-auto shadow-sm">
+                    <p class="text-base md:text-lg text-gray-700 leading-relaxed font-light">
+                        Evento criado para promover a inclusão, ampliar oportunidades de <strong
+                            class="font-bold text-gray-900">networking</strong> entre empreendedoras de diferentes
+                        setores, fortalecer a rede de mulheres de negócios e apoiar a independência econômica feminina.
+                        Contribua para o crescimento da sua marca e faça parte de um ecossistema mais <strong
+                            class="font-bold text-primary">igualitário e inovador</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <button @click="formModalOpen = true; ticketType = 'plateia'"
+                    class="px-10 py-5 bg-primary text-white font-black rounded-full text-lg uppercase tracking-wider hover:bg-blue-700 hover:scale-105 transition-all shadow-xl shadow-blue-500/30">
+                    Garantir minha vaga agora
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Por que participar (3 Cards Light) -->
+    <section class="py-16 bg-background relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 border-t-4 border-t-gray-300 hover:border-t-primary transition-all">
+                    <h3 class="text-2xl font-display font-bold text-gray-900 mb-3">Expandir a visão</h3>
+                    <p class="text-gray-600">Tenha acesso a insights, experiências e novas perspectivas para acelerar
+                        sua trajetória.</p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="bg-white p-8 rounded-2xl border border-gray-100 border-t-4 border-t-primary relative transform md:-translate-y-4 shadow-xl">
+                    <span
+                        class="absolute -top-3 right-6 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">Mais
+                        visado</span>
+                    <h3 class="text-2xl font-display font-bold text-gray-900 mb-3">Gerar negócios</h3>
+                    <p class="text-gray-600">Conecte-se com marcas, parcerias e oportunidades reais para crescer com
+                        consistência.</p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 border-t-4 border-t-gray-300 hover:border-t-primary transition-all">
+                    <h3 class="text-2xl font-display font-bold text-gray-900 mb-3">Fortalecer conexões</h3>
+                    <p class="text-gray-600">Construa networking estratégico com mulheres e negócios que se impulsionam
+                        mutuamente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Speakers (Limpo e Organizado) -->
+    <section id="speakers" class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-display font-black text-gray-900 mb-4">Key Speakers</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">Conheça as convidadas desta edição e inspire-se com
+                    quem está construindo impacto no Maranhão.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Speaker 1 -->
+                <div class="text-center group">
+                    <div
+                        class="w-56 h-56 mx-auto mb-6 rounded-3xl overflow-hidden shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300">
+                        <img src="assets/img/jacira.png" alt="Jacira Haickel" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Jacira Haickel</h3>
+                    <p class="text-primary font-medium text-sm mb-1">Diretora Hotel Blue Tree</p>
+                    <p class="text-xs text-gray-400">@jacirahaickel</p>
+                </div>
+                <!-- Speaker 2 -->
+                <div class="text-center group">
+                    <div
+                        class="w-56 h-56 mx-auto mb-6 rounded-3xl overflow-hidden shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300">
+                        <img src="assets/img/flaviana.png" alt="Flaviana Oliveira" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Flaviana Oliveira</h3>
+                    <p class="text-primary font-medium text-sm mb-1">Coord. CREDIAMIGO</p>
+                    <p class="text-xs text-gray-400">Unidade Centro</p>
+                </div>
+                <!-- Speaker 3 -->
+                <div class="text-center group">
+                    <div
+                        class="w-56 h-56 mx-auto mb-6 rounded-3xl overflow-hidden shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300">
+                        <img src="assets/img/gracilea.jpg" alt="Gracilea Furtado" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Gracilea Furtado</h3>
+                    <p class="text-primary font-medium text-sm mb-1">Gerente Relacionamento BNB</p>
+                    <p class="text-xs text-gray-400">Banco do Nordeste</p>
+                </div>
+                <!-- Speaker 4 -->
+                <div class="text-center group">
+                    <div
+                        class="w-56 h-56 mx-auto mb-6 rounded-3xl overflow-hidden shadow-md group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300">
+                        <img src="assets/img/lucianna.png" alt="Lucianna Pimentel" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">Lucianna Pimentel</h3>
+                    <p class="text-primary font-medium text-sm mb-1">Idealizadora Blue Mulher</p>
+                    <div class="flex items-center justify-center gap-3 mt-1">
+                        <a href="https://www.instagram.com/luhpimentelpro?igsh=MW01ZHY4b2d5d3Y1ZQ==" target="_blank"
+                            class="text-gray-400 hover:text-accent transition-colors" title="Instagram">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/luh-pim%C3%ABntel/" target="_blank"
+                            class="text-gray-400 hover:text-accent transition-colors" title="LinkedIn">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agenda Minimalista & Organizada -->
+    <section id="agenda" class="py-24 bg-background">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-display font-black text-gray-900 mb-4">Agenda</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">Uma programação pensada para conexão, conteúdo
+                    prático e oportunidades.</p>
+            </div>
+
+            <!-- Timeline Clean -->
+            <div class="space-y-6">
+                <!-- Item 1 -->
+                <div
+                    class="flex items-center gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-24 shrink-0 text-right border-r-2 border-primary pr-6">
+                        <span class="text-2xl font-black text-primary font-display">17:00</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800">Registro e Networking</h3>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div
+                    class="flex items-center gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden">
+                    <div class="w-24 shrink-0 text-right border-r-2 border-primary pr-6 relative z-10">
+                        <span class="text-2xl font-black text-primary font-display">19:00</span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-lg font-bold text-gray-800">Mesa redonda com Jacira Haickel e convidadas</h3>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div
+                    class="flex items-center gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-24 shrink-0 text-right border-r-2 border-accent pr-6">
+                        <span class="text-2xl font-black text-accent font-display">19:30</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800">Início dos PITCHs de negócio</h3>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div
+                    class="flex items-center gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-24 shrink-0 text-right border-r-2 border-accent pr-6">
+                        <span class="text-2xl font-black text-accent font-display">20:30</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800">Finalização dos PITCHs de negócio</h3>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div
+                    class="flex items-center gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="w-24 shrink-0 text-right border-r-2 border-gray-300 pr-6">
+                        <span class="text-2xl font-black text-gray-500 font-display">21:00</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800">Agradecimentos e encerramento</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <button @click="formModalOpen = true; ticketType = 'plateia'"
+                    class="px-8 py-4 bg-dark text-white font-bold rounded-full uppercase tracking-wider hover:bg-gray-800 transition-all shadow-lg">
+                    Garantir minha vaga agora
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tickets / Inscrições -->
+    <section id="inscricoes" class="py-24 bg-white border-y border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Plateia -->
+                <div
+                    class="bg-gray-50 p-10 rounded-3xl border border-gray-200 flex flex-col h-full hover:border-gray-300 transition-colors">
+                    <div class="mb-6">
+                        <span
+                            class="bg-gray-200 text-gray-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Público
+                            Geral</span>
+                    </div>
+                    <h3 class="text-3xl font-display font-black text-gray-900 mb-4">Participante</h3>
+                    <p class="text-gray-600 mb-8 flex-grow">Para quem quer viver a experiência, fazer networking e
+                        apoiar o ecossistema. <br><br> <strong class="text-primary">Ingresso Solidário:</strong> 1
+                        pacote de absorvente no dia do evento.</p>
+                    <h4 class="text-4xl font-black text-gray-900 mb-8">Gratuito</h4>
+                    <button @click="formModalOpen = true; ticketType = 'plateia'"
+                        class="w-full py-4 bg-white hover:bg-gray-100 text-gray-900 font-bold rounded-xl transition-all uppercase tracking-wide border-2 border-gray-900">
+                        Inscrever como participante
+                    </button>
+                </div>
+
+                <!-- Pitch -->
+                <div
+                    class="bg-primary p-10 rounded-3xl border-0 flex flex-col h-full relative overflow-hidden shadow-2xl shadow-blue-500/20">
+                    <!-- Detalhe decorativo -->
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+
+                    <div class="mb-6 relative z-10">
+                        <span
+                            class="bg-white text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Vagas
+                            Limitadas</span>
+                    </div>
+                    <h3 class="text-3xl font-display font-black text-white mb-4 relative z-10">Expositora / Pitch</h3>
+                    <p class="text-blue-100 mb-8 flex-grow relative z-10">Para empreendedoras que querem apresentar seu
+                        negócio, gerar visibilidade e conexões comerciais. Passará por curadoria.</p>
+                    <h4 class="text-4xl font-black text-white mb-8 relative z-10">Gratuito</h4>
+                    <button @click="formModalOpen = true; ticketType = 'pitch'"
+                        class="w-full py-4 bg-white hover:bg-gray-50 text-primary font-black rounded-xl transition-all uppercase tracking-wide relative z-10 shadow-lg">
+                        Inscrever como expositora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="py-24 bg-background" x-data="{ tab: '2025' }">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl lg:text-5xl font-display font-black text-gray-900 mb-4">Momentos</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">Veja como foi a energia do Blue Mulher e a força das
+                    conexões criadas nas edições passadas.</p>
+            </div>
+
+            <!-- Tabs Light -->
+            <div class="flex justify-center space-x-4 mb-12">
+                <button @click="tab = '2025'"
+                    :class="{ 'bg-primary text-white border-primary': tab === '2025', 'border-gray-300 text-gray-500 hover:bg-white': tab !== '2025' }"
+                    class="px-6 py-2 rounded-full border font-bold transition-all shadow-sm">3ª Edição</button>
+                <button @click="tab = '2024'"
+                    :class="{ 'bg-primary text-white border-primary': tab === '2024', 'border-gray-300 text-gray-500 hover:bg-white': tab !== '2024' }"
+                    class="px-6 py-2 rounded-full border font-bold transition-all shadow-sm">2ª Edição</button>
+            </div>
+
+            <!-- Scroll Horizontal Responsivo para Não Quebrar o Site com 29 Vídeos -->
+            <div x-show="tab === '2025'" x-transition
+                class="flex overflow-x-auto pb-8 snap-x snap-mandatory gap-6 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
+                <!-- V1 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1F2ZLEDLVW572wLSbpjv1tLmj8lZcbW8V/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V2 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1AI3VstIUuk4qIloVmEID6_v4QTSAf-H1/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V3 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1l_DZ0LwkOhuHRzc1ZZ3qx_qQlNMSkNfh/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V4 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1cbGusgzSxWHOWjG4KW_4y3b8BHQgyBc-/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V5 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1gejDr3obc3jmbxkbK56Tmr_xJ59U_9oS/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V6 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1OBWsEBIzVhvf5oIVNrkfpcgAX48k3FXI/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V7 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1GbPvT5I9ptVYeGzGXnIlzZZo99eYmcTx/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V8 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1aORezsedSGyoObAPeJGifQozHnjkNj8l/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V9 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1xkQb1371U2pHswjNzQ7RhkOUc0FYn1co/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V10 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1CBWlvCjHOXyXncW2dZ9osC9QP-Le0C5-/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V11 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1jbvZ5Hy1lNub5-6UFbqD_kMJBtCa9m4X/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V12 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1r8gYqvoYWSKrPiuruiBW7bifo99fbgFm/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V13 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1_ElN9r3bMGVwTqeHiEzGIEmZpjfCkveO/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V14 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/15kUX79WwgxhRn5TqS1dfM6Q34NFKDk1I/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V15 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1mYWnStsVLdbxO1NqO8-mpbseZo_N4mqc/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V16 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1RuvQpvN0xkgzaAMJC9SMGMRHD7CIoDTR/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V17 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1VWMPA2bSiuv727AyTO3kXwBN3-t3HN5W/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V18 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1u_wTHmt9VXy71yOjBZVoZD5OLE1n8IoD/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V19 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1UZJdFcdq6-MUL5zPDvbfvF1tmLvFklO-/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V20 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1pMG-b7Mi_oC7YLsKHR6bcbP8dkQo5uMZ/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+            </div>
+
+            <div x-show="tab === '2024'" x-cloak x-transition
+                class="flex overflow-x-auto pb-8 snap-x snap-mandatory gap-6 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
+                <!-- V21 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/16zPBVUjXelTAsg3gmYajL503-hiDrZSO/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V22 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1VogGcezUlUdO0uMT2NCQo2Zy0P2-aDAL/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V23 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1_xw8xX9XiJliYor5gR0tJROXcIFwSvDe/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V24 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1bFTlen9_MPv5GD6GWRUoFEj-j091qSbE/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V25 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1sX3qELmyP8wuat5FVPIisapVchUJSy0k/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V26 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1w3IA8gunv4N72ipy-In3cSIiXiV9JMmX/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V27 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1s1cJjgjsP5V6KwJ3dq7hA9FgLIU_uJqK/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V28 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1D4sE1zVcWZp8ci6hxgNq4JfyqhLs4bIl/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+                <!-- V29 -->
+                <div
+                    class="flex-none w-[85vw] sm:w-[45vw] lg:w-[30vw] aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow border border-gray-100 relative snap-center">
+                    <iframe src="https://drive.google.com/file/d/1zm5T3g5HCoi0IrsnY4yNnDzYoeyfKCcr/preview" width="100%"
+                        height="100%" allow="autoplay" loading="lazy"
+                        class="absolute inset-0 w-full h-full border-0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marcas Apoiadoras & Benefícios -->
+    <section class="py-24 bg-white border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-2xl font-display font-black text-gray-900 mb-12">Marcas Apoiadoras do Evento</h3>
+
+            <!-- Grid de Logos -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 lg:mb-28">
+                <!-- Blue Tree -->
+                <div
+                    class="bg-gray-50 aspect-[4/3] rounded-2xl flex items-center justify-center border border-gray-100 p-6 hover:shadow-md hover:border-blue-200 transition-all group">
+                    <img src="assets/img/logos/bluetree.png" alt="Blue Tree"
+                        class="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <span class="hidden text-xl font-black text-blue-900 font-display text-center leading-tight">Blue
+                        Tree<br><span class="text-xs font-sans text-blue-600 font-medium">São Luís -
+                            Maranhão</span></span>
+                </div>
+                <!-- Jeep Texas -->
+                <div
+                    class="bg-gray-50 aspect-[4/3] rounded-2xl flex items-center justify-center border border-gray-100 p-6 hover:shadow-md transition-all group">
+                    <img src="assets/img/logos/jeep.png" alt="Jeep Texas"
+                        class="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <span
+                        class="hidden items-center justify-center bg-gray-900 text-white font-display font-bold text-lg px-4 py-2 w-full">Jeep
+                        | Texas</span>
+                </div>
+                <!-- Oito Restaurante -->
+                <div
+                    class="bg-gray-50 aspect-[4/3] rounded-2xl flex items-center justify-center border border-gray-100 p-6 hover:shadow-md transition-all group">
+                    <img src="assets/img/logos/oito.png" alt="Oito Restaurante"
+                        class="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden flex-col items-center justify-center">
+                        <span
+                            class="text-5xl font-light text-[#bfa07e] font-display mb-2 border border-[#bfa07e] rounded-full w-14 h-14 flex items-center justify-center">8</span>
+                        <span class="text-lg font-black text-blue-900 tracking-widest font-display">OITO</span>
+                        <span class="text-[0.6rem] text-gray-400 tracking-[0.2em] mt-1">RESTAURANTE</span>
+                    </div>
+                </div>
+                <!-- Marina Ribeiro -->
+                <div
+                    class="bg-gray-50 aspect-[4/3] rounded-2xl flex items-center justify-center border border-gray-100 p-6 hover:shadow-md transition-all group">
+                    <img src="assets/img/logos/marinaribeiro.png" alt="Marina Ribeiro"
+                        class="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-[#303030] flex-col items-center justify-center text-white p-4">
+                        <span class="text-3xl mb-1">❀</span>
+                        <span class="font-light italic text-xl whitespace-nowrap">Marina Ribeiro</span>
+                        <span class="text-[0.5rem] tracking-widest uppercase mt-1 text-gray-400">Decoração de
+                            Festas</span>
+                    </div>
+                </div>
+                <!-- Catering SLZ Buffet -->
+                <div
+                    class="bg-gray-50 aspect-[4/3] rounded-2xl flex items-center justify-center border border-gray-100 p-6 hover:shadow-md transition-all group">
+                    <img src="assets/img/logos/cateringslz.png" alt="Catering SLZ Buffet"
+                        class="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden flex-col items-center justify-center text-gray-900 border-2 border-gray-900 p-2">
+                        <span class="text-2xl mb-1">🍲</span>
+                        <span class="font-black text-sm tracking-widest uppercase whitespace-nowrap">Catering SLZ</span>
+                        <span class="text-[0.6rem] tracking-widest uppercase font-bold text-gray-500">Buffet</span>
+                    </div>
+                </div>
+                <!-- W Comunicação -->
+                <div
+                    class="bg-gray-50 aspect-[4/3] rounded-2xl flex items-center justify-center border border-gray-100 p-6 hover:shadow-md transition-all group">
+                    <img src="assets/img/logos/wcomunicacao.png" alt="W Comunicação & Marketing"
+                        class="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden flex-col items-center justify-center">
+                        <div class="w-16 h-16 bg-[#5A1813] rounded-full flex items-center justify-center mb-2">
+                            <span class="text-3xl text-white font-serif italic">W</span>
+                        </div>
+                        <span
+                            class="text-[0.6rem] font-bold text-[#5A1813] text-center leading-tight uppercase">Comunicação<br>&
+                            Marketing</span>
+                    </div>
+                </div>
+                <!-- Gisela -->
+                <div
+                    class="bg-gray-50 aspect-[4/3] rounded-2xl flex items-center justify-center border border-gray-100 p-6 hover:shadow-md transition-all group">
+                    <img src="assets/img/logos/gisela.png" alt="Gisela"
+                        class="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div
+                        class="hidden flex-col items-center justify-center w-full h-full bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-2 text-center">
+                        <span class="font-serif italic text-xl">Gisela Diniz</span>
+                        <span class="text-[0.5rem] mt-2 border-t border-white/50 pt-1">Doces e Salgados</span>
+                    </div>
+                </div>
+                <!-- Luh Pimentel Inc. -->
+                <div
+                    class="bg-gray-50 aspect-[4/3] rounded-2xl flex items-center justify-center border border-gray-100 p-6 hover:shadow-md transition-all group">
+                    <img src="assets/img/logos/luhpimentel-inc.png" alt="Luh Pimentel Inc."
+                        class="max-w-full max-h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden flex-col justify-center items-start text-left">
+                        <span class="text-lg font-light text-gray-800 leading-none">Luh</span>
+                        <span class="text-2xl font-light text-gray-800 leading-none mb-1">Pimëntel<sub
+                                class="text-xs font-bold">INC.</sub></span>
+                        <span class="text-[0.6rem] text-gray-500 tracking-widest font-light">Mentora de Negócios</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefícios para Apoiadoras (ODS ONU) -->
+            <div
+                class="flex flex-col lg:flex-row items-center justify-between gap-12 text-left pt-12 border-t border-gray-100">
+                <div class="lg:w-1/2">
+                    <h4 class="text-lg font-bold text-gray-500 mb-6 uppercase tracking-wider">Benefício para marca
+                        apoiadora</h4>
+                    <p class="text-2xl text-gray-800 leading-relaxed font-light">
+                        Atendemos <strong class="font-bold text-blue-600">7 dos 17 Objetivos de Desenvolvimento
+                            Sustentável da ONU</strong> – o que contribui para imagem das empresas apoiadoras e
+                        principalmente daquelas que almejam o selo "melhores empresas"
+                    </p>
+                </div>
+                <div class="lg:w-1/2">
+                    <img src="assets/img/ods-onu.png" alt="Objetivos de Desenvolvimento Sustentável da ONU"
+                        class="w-full h-auto rounded-2xl shadow-sm border border-gray-50 hover:shadow-lg transition-shadow duration-500">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Light -->
+    <section id="faq" class="py-24 bg-background">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-black text-gray-900 mb-4">Perguntas Frequentes</h2>
+            </div>
+
+            <div class="space-y-4">
+                <details class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm group cursor-pointer" open>
+                    <summary class="font-bold text-lg list-none flex justify-between items-center text-gray-900">
+                        O evento é apenas para mulheres?
+                        <span class="text-primary group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 leading-relaxed">O momento do PITCH de Negócios é uma vitrine técnica
+                        exclusiva para mulheres empreendedoras. No entanto, homens são muito bem-vindos na plateia como
+                        apoiadores e para networking.</p>
+                </details>
+
+                <details class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-lg list-none flex justify-between items-center text-gray-900">
+                        Qual o valor da inscrição?
+                        <span class="text-primary group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 leading-relaxed">A inscrição é 100% gratuita. Solicitamos apenas o
+                        Ingresso Solidário: 1 pacote de absorvente íntimo no dia do evento para doação.</p>
+                </details>
+
+                <details class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-lg list-none flex justify-between items-center text-gray-900">
+                        Como funciona a modalidade Expositora/Pitch?
+                        <span class="text-primary group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 leading-relaxed">Após sua pré-inscrição pelo formulário, enviando suas
+                        fotos e resumo executivo, nossa curadoria analisa seu perfil e entra em contato para confirmar
+                        critérios, horários e orientações da vitrine.</p>
+                </details>
+
+                <details class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm group cursor-pointer">
+                    <summary class="font-bold text-lg list-none flex justify-between items-center text-gray-900">
+                        Sou empresa e quero apoiar o evento. Como faço?
+                        <span class="text-primary group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 leading-relaxed">Fale com nossa equipe no WhatsApp: <strong
+                            class="text-primary">+55 (98) 9117-1809 (Luh Pimentel)</strong>
+                        para conhecer as cotas e associar sua marca aos ODS da ONU.</p>
+                </details>
+            </div>
+
+            <div class="mt-16 text-center">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Ainda tem dúvidas?</h3>
+                <p class="mb-6 text-gray-500">Fale com <strong class="text-gray-900">Luh Pimentel</strong> diretamente
+                    no WhatsApp suporte.</p>
+                <a href="https://wa.me/559891171809" target="_blank"
+                    class="inline-block px-8 py-3 bg-[#25D366] text-white font-bold rounded-full hover:bg-[#1ebd5a] transition-colors shadow-md">
+                    Falar no WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Light/Dark -->
+    <footer class="bg-dark text-gray-400 py-12 text-center text-sm">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="font-display font-black text-2xl text-white mb-6">BLUE MULHER</h2>
+            <div class="flex justify-center flex-wrap gap-4 sm:space-x-6 mb-8">
+                <a href="https://www.instagram.com/luhpimentelpro?igsh=MW01ZHY4b2d5d3Y1ZQ==" target="_blank"
+                    class="hover:text-accent transition-colors">Instagram</a>
+                <a href="https://www.linkedin.com/in/luh-pim%C3%ABntel/" target="_blank"
+                    class="hover:text-accent transition-colors">LinkedIn</a>
+                <a href="mailto:lpimentelmktg@gmail.com"
+                    class="hover:text-accent transition-colors">lpimentelmktg@gmail.com</a>
+            </div>
+            <div class="space-x-4 mb-8 text-xs">
+                <a href="#" class="hover:text-white underline">Política de Privacidade</a>
+                <a href="#" class="hover:text-white underline">Termos de Uso</a>
+            </div>
+            <p>© 2026 Blue Mulher. Todos os direitos reservados. Conexões que impulsionam negócios.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL FORMULARIO -->
+    <div x-show="formModalOpen" x-cloak
+        class="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-4 sm:p-6"
+        aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div x-show="formModalOpen" x-transition.opacity class="fixed inset-0 bg-dark/60 backdrop-blur-sm"
+            @click="formModalOpen = false"></div>
+
+        <div x-show="formModalOpen" x-transition.scale.origin.bottom
+            class="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl p-6 sm:p-10 text-left overflow-hidden h-fit my-8 border border-gray-100">
+            <button @click="formModalOpen = false"
+                class="absolute top-6 right-6 text-gray-400 hover:text-gray-900 transition-colors">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <h3 class="text-3xl font-display font-black text-gray-900 mb-2">Garanta sua inscrição</h3>
+            <p class="text-gray-500 mb-8">Preencha em menos de 1 minuto e confirme sua participação.</p>
+
+            <!-- Links Diretos para Inscrição (Google Forms) -->
+            <div class="space-y-4">
+                <a href="#" target="_blank"
+                    class="flex items-center justify-between w-full p-4 bg-white border-2 border-primary rounded-xl text-primary hover:bg-blue-50 transition-colors group">
+                    <div class="flex items-center gap-4">
+                        <span class="text-3xl">🎟️</span>
+                        <div class="text-left">
+                            <h4 class="font-bold text-lg text-gray-900 group-hover:text-primary">Participante
+                            </h4>
+                            <p class="text-sm text-gray-500 font-medium">Ingresso Solidário (Doação Absorvente)</p>
+                        </div>
+                    </div>
+                    <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+
+                <a href="#" target="_blank"
+                    class="flex items-center justify-between w-full p-4 bg-primary border-2 border-primary rounded-xl text-white hover:bg-blue-800 transition-colors shadow-md group">
+                    <div class="flex items-center gap-4">
+                        <span class="text-3xl">💼</span>
+                        <div class="text-left">
+                            <h4 class="font-bold text-lg text-white">Marca Expositora / Pitch</h4>
+                            <p class="text-sm text-blue-100 font-medium">Divulgue seu negócio no evento</p>
+                        </div>
+                    </div>
+                    <svg class="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="mt-6 text-center">
+                <p class="text-xs text-gray-500 max-w-sm mx-auto">
+                    Você será redirecionada para a página oficial e segura do formulário da curadoria (Google Forms).
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- /MODAL FORMULARIO -->
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('inscricaoForm', () => ({
+                formModalOpen: false,
+                ticketType: 'plateia',
+                openModal() {
+                    this.formModalOpen = true;
+                    this.ticketType = 'plateia';
+                }
+            }));
+        });
+    </script>
+
+</body>
+
+</html>
